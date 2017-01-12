@@ -4,7 +4,12 @@
 const mysql = require('mysql'),
     constant = require('./constant');
 
-let config = constant.db;
+let config = {
+    host: constant.db.HOST,
+    user: constant.db.USER,
+    database: constant.db.DATABASE,
+    password: constant.db.PASSWORD
+};
 let connection = mysql.createConnection(config);
 
 function initialize() {

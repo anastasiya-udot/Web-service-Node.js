@@ -1,3 +1,3 @@
 module.exports = function(app){
-    app.get('/', require('./../controller/start-page.contoller').get);
+    app.post('/data-post', require('./../controller/request.controller').post);
 };

@@ -3,18 +3,14 @@ let http = require('http');
 let path = require('path');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
-let constant    = require('./libs/constant');
+let constant = require('./libs/constant');
 let db = require('./libs/data-base');
 
 let app = express();
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(express.static(path.join(__dirname, 'public')));
 
 let dbConnectionPromise = new Promise((resolve, reject) => {
     try {
@@ -39,8 +35,9 @@ dbConnectionPromise.then(() => {
 
 
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res) {
+    app.use(function(err, req, res, next) {
         if(err){
+            console.log(err.message);
             res.status(err.status || 500);
             res.render('error', {
                 message: err.message,
