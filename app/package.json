@@ -1,10 +1,7 @@
 {
-  "name": "application-name",
+  "name": "Web-service",
   "version": "0.0.1",
   "private": true,
-  "scripts": {
-    "start": "nodejs ./bin/www"
-  },
   "dependencies": {
     "async": "^2.1.4",
     "body-parser": "~1.0.0",
